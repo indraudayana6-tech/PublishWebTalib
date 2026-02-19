@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi M. Aboe Talib</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #332c28;
+            line-height: 1.6;
+            background-color: #fdfaf5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #2b1d12;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #d4a373;
+        }
+
+        /* Nav Links */
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: #f5e6d3;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d4a373;
+        }
+
+        /* --- HAMBURGER MENU (CSS ONLY) --- */
+        #menu-toggle {
+            display: none; /* Sembunyikan checkbox */
+        }
+
+        .hamburger {
+            display: none; /* Sembunyikan di desktop */
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: #d4a373;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                        url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-content span {
+            color: #d4a373;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: #d4a373;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background: transparent;
+            border-color: #d4a373;
+            color: #d4a373;
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #d4a373;
+        }
+
+        /* --- ABOUT --- */
+        .about {
+            background-color: #fff;
+        }
+
+        .about p {
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* --- PRODUCTS --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4a373;
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 {
+            margin-bottom: 15px;
+            color: #2b1d12;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #2b1d12;
+            color: #f5e6d3;
+            padding: 60px 8% 20px;
+            text-align: center;
+        }
+
+        .footer-info {
+            margin-bottom: 30px;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .hamburger {
+                display: flex; /* Tampilkan di mobile */
+            }
+
+            /* Menu Navigasi Mobile */
+            nav ul {
+                position: fixed;
+                top: 70px; /* Tinggi navbar */
+                left: -100%; /* Sembunyikan di luar layar kiri */
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #2b1d12;
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.5s ease;
+                z-index: 999;
+            }
+
+            nav ul li {
+                margin: 20px 0;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+            }
+
+            /* Logika Klik Hamburger via CSS Checkbox */
+            #menu-toggle:checked ~ ul {
+                left: 0; /* Geser menu ke tengah */
+            }
+
+            /* Animasi Hamburger ke 'X' */
+            #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+            #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">M. ABOE TALIB</div>
+        
+        <input type="checkbox" id="menu-toggle">
+        
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Cerita Kami</a></li>
+            <li><a href="#products">Koleksi Kopi</a></li>
+            <li><a href="#contact">Hubungi</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Warisan Rasa <br><span>Sejak Generasi</span></h1>
+            <p>Menghadirkan keaslian biji kopi pilihan dengan proses yang legendaris.</p>
+            <a href="#products" class="btn">Jelajahi Rasa</a>
+        </div>
+    </header>
+
+    <section id="about" class="about">
+        <h2>Tentang M. Aboe Talib</h2>
+        <p>Berawal dari semangat menjaga kemurnian cita rasa, Kopi M. Aboe Talib terus konsisten menghadirkan aroma kopi yang kuat dan autentik. Setiap butir biji kopi kami diproses dengan dedikasi tinggi untuk memastikan Anda merasakan tradisi dalam setiap tegukan.</p>
+    </section>
+
+    <section id="products" class="products">
+        <h2>Koleksi Terbaik</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="icon-box">☕</div>
+                <h3>Kopi Bubuk Murni</h3>
+                <p>Kopi giling halus dengan karakter rasa yang "bold" dan aroma yang sangat tajam.</p>
+            </div>
+            <div class="product-card">
+                <div class="icon-box">🫘</div>
+                <h3>Biji kopi piliha</h3>
+                <p>Biji kopi pilihan yang dengan tingkat kematangan sempurna secara tradisional.</p>
+            </div>
+            <div class="product-card">
+                <div class="icon-box">🎁</div>
+                <h3>Paket Oleh-Oleh</h3>
+                <p>Kemasan khusus yang cocok dibawa pulang</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-info">
+            <h3>Kopi M. Aboe Talib</h3>
+            <p>Br Anyar, Kecamatan Kediri, Kabupaten Tabanan, Bali</p>
+            <p>Kopi Saring Legendaris Sejak 1940</p>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Kopi M. Aboe Talib. Dibuat dengan cinta untuk pecinta kopi.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
