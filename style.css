@@ -1,0 +1,149 @@
+/* --- CSS TERPISAH (style.css) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #332c28;
+    line-height: 1.6;
+    background-color: #fdfaf5;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* --- NAVBAR --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #2b1d12;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+nav .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #d4a373;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: #f5e6d3;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #d4a373;
+}
+
+/* --- HAMBURGER MENU --- */
+#menu-toggle { display: none; }
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: #d4a373;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* --- HERO & SECTIONS --- */
+.hero {
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content h1 { font-size: clamp(2.2rem, 8vw, 4rem); margin-bottom: 15px; }
+.hero-content span { color: #d4a373; }
+
+section { padding: 80px 8%; text-align: center; }
+h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 40px; position: relative; padding-bottom: 15px; }
+h2::after {
+    content: ''; position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%); width: 60px; height: 3px; background: #d4a373;
+}
+
+/* --- PRODUCT GRID (6 FOTO) --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.product-card:hover { transform: translateY(-10px); }
+
+.product-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Biar gambar tidak penyok */
+    display: block;
+}
+
+.product-info { padding: 20px; }
+
+/* --- FOOTER --- */
+footer { background: #2b1d12; color: #f5e6d3; padding: 40px 8%; text-align: center; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    nav ul {
+        position: fixed; top: 70px; left: -100%; width: 100%;
+        height: calc(100vh - 70px); background: #2b1d12;
+        flex-direction: column; justify-content: center; transition: 0.5s;
+    }
+    #menu-toggle:checked ~ ul { left: 0; }
+    #menu-toggle:checked ~ .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked ~ .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
